@@ -1,23 +1,26 @@
 {
-	"name": "AnimatedGradient",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-    "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.0",
-		"react-native-linear-gradient": "file:../.."
-	},
-	"devDependencies": {
-		"babel-jest": "18.0.0",
-		"babel-preset-react-native": "1.9.1",
-		"jest": "18.0.0",
-		"react-test-renderer": "15.4.1"
-	},
-	"jest": {
-		"preset": "react-native"
-	}
+  "name": "AnimatedGradient",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.7.0",
+    "react-native": "0.57.8",
+    "create-react-class": "15.6.3",
+    "react-native-linear-gradient": "file:../.."
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/runtime": "^7.2.0",
+    "babel-jest": "18.0.0",
+    "metro-react-native-babel-preset": "0.48.5",
+    "jest": "18.0.0",
+    "react-test-renderer": "15.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
