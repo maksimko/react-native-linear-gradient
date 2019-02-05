@@ -1,6 +1,8 @@
 package com.BV.LinearGradient;
 
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.PixelUtil;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -8,7 +10,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 
 import android.view.View;
 
-public class LinearGradientManager extends SimpleViewManager<LinearGradientView> {
+public class LinearGradientManager extends ViewGroupManager<LinearGradientView> {
 
     public static final String REACT_CLASS = "BVLinearGradient";
     public static final String PROP_COLORS = "colors";
@@ -43,12 +45,12 @@ public class LinearGradientManager extends SimpleViewManager<LinearGradientView>
     }
 
     @ReactProp(name=PROP_START_POS)
-    public void setStartPosition(LinearGradientView gradientView, ReadableArray startPos) {
+    public void setStartPosition(LinearGradientView gradientView, ReadableMap startPos) {
         gradientView.setStartPosition(startPos);
     }
 
     @ReactProp(name=PROP_END_POS)
-    public void setEndPosition(LinearGradientView gradientView, ReadableArray endPos) {
+    public void setEndPosition(LinearGradientView gradientView, ReadableMap endPos) {
         gradientView.setEndPosition(endPos);
     }
 

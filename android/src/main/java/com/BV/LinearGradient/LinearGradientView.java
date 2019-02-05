@@ -1,6 +1,7 @@
 package com.BV.LinearGradient;
 
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.PixelUtil;
 
 import android.content.Context;
@@ -10,9 +11,10 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-public class LinearGradientView extends View {
+public class LinearGradientView extends LinearLayout {
 
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Path mPathForBorderRadius;
@@ -32,15 +34,18 @@ public class LinearGradientView extends View {
 
     public LinearGradientView(Context context) {
         super(context);
+
+        setWillNotDraw(false);
+        setOrientation(VERTICAL);
     }
 
-    public void setStartPosition(ReadableArray startPos) {
-        mStartPos = new float[]{(float) startPos.getDouble(0), (float) startPos.getDouble(1)};
+    public void setStartPosition(ReadableMap startPos) {
+        mStartPos = new float[]{(float) startPos.getDouble("x"), (float) startPos.getDouble("y")};
         drawGradient();
     }
 
-    public void setEndPosition(ReadableArray endPos) {
-        mEndPos = new float[]{(float) endPos.getDouble(0), (float) endPos.getDouble(1)};
+    public void setEndPosition(ReadableMap endPos) {
+        mEndPos = new float[]{(float) endPos.getDouble("x"), (float) endPos.getDouble("y")};
         drawGradient();
     }
 
@@ -63,6 +68,7 @@ public class LinearGradientView extends View {
         mLocations = _locations;
         drawGradient();
     }
+
 
     public void setUseAngle(boolean useAngle) {
         mUseAngle = useAngle;
@@ -132,9 +138,9 @@ public class LinearGradientView extends View {
                 startPos[1] * mSize[1],
                 endPos[0] * mSize[0],
                 endPos[1] * mSize[1],
-            mColors,
-            mLocations,
-            Shader.TileMode.CLAMP);
+                mColors,
+                mLocations,
+                Shader.TileMode.CLAMP);
         mPaint.setShader(mShader);
         invalidate();
     }
@@ -147,9 +153,9 @@ public class LinearGradientView extends View {
         mPathForBorderRadius.reset();
         mTempRectForBorderRadius.set(0f, 0f, (float) mSize[0], (float) mSize[1]);
         mPathForBorderRadius.addRoundRect(
-            mTempRectForBorderRadius,
-            mBorderRadii,
-            Path.Direction.CW);
+                mTempRectForBorderRadius,
+                mBorderRadii,
+                Path.Direction.CW);
     }
 
     @Override
